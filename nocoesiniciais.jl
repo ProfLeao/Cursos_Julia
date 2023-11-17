@@ -12,7 +12,10 @@ begin
 end
 
 # ╔═╡ e1e619b7-f29d-4c8f-a62f-105bc0189fcf
-using Plots
+begin
+	using Plots
+	plotly()
+end
 
 # ╔═╡ c9dfb2ba-5710-11ee-3f3b-ad0d7a9832cc
 md"""
@@ -80,16 +83,22 @@ Para a aplicação da função elemento-a-elemnto (*elementwise*), aplica-se o o
 vec_z = @. rosen(vec_xy', vec_xy);
 
 # ╔═╡ 4fe859f9-fc9a-4f9a-8a93-62308da20a3d
-md"Finalmente o gráfico pode ser obtido na forma de uma superfície."
+md"Finalmente representações gráficas podem ser construídas, primeiramente na forma de um contorno 2D."
+
+# ╔═╡ 68c3f09d-6e5c-43d2-a5ad-64e59184e456
+# ╠═╡ disabled = true
+#=╠═╡
+
+  ╠═╡ =#
 
 # ╔═╡ e0c78be0-dc34-4f4d-a8b6-cdb9c8f8a1fe
-contourf(vec_xy, vec_xy, log.(vec_z), color=:viridis)
+plot(contourf(vec_xy, vec_xy, log.(vec_z), color=:viridis))
+
+# ╔═╡ 85be93ac-f1a5-464c-936e-bcab792a5b95
+md"Em seguida como uma superfície tridimensional."
 
 # ╔═╡ 6b02ca19-ee6e-4442-94cf-58ed9ab2ca96
 surface(vec_xy, vec_xy, log.(vec_z), color=:viridis)
-
-# ╔═╡ cb0a77d8-8970-4ded-8e5d-cf5a58b5099d
-sinc
 
 # ╔═╡ b3ff1ab6-0ef3-44fb-b8f6-162315e973f2
 
@@ -105,9 +114,10 @@ sinc
 # ╠═c32c0172-108c-46a1-9245-8e846fc97bd4
 # ╠═936f38ce-c5de-45b6-ab12-e9f443f97f71
 # ╠═e636ae77-77dd-414d-9eae-b6c1aff8583c
-# ╠═4fe859f9-fc9a-4f9a-8a93-62308da20a3d
 # ╠═e1e619b7-f29d-4c8f-a62f-105bc0189fcf
+# ╠═4fe859f9-fc9a-4f9a-8a93-62308da20a3d
+# ╠═68c3f09d-6e5c-43d2-a5ad-64e59184e456
 # ╠═e0c78be0-dc34-4f4d-a8b6-cdb9c8f8a1fe
+# ╠═85be93ac-f1a5-464c-936e-bcab792a5b95
 # ╠═6b02ca19-ee6e-4442-94cf-58ed9ab2ca96
-# ╠═cb0a77d8-8970-4ded-8e5d-cf5a58b5099d
 # ╠═b3ff1ab6-0ef3-44fb-b8f6-162315e973f2
