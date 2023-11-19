@@ -48,7 +48,7 @@ Note que os tipos de `x` e `y` foram informados, ainda que a tipagem não seja e
 
 Feito isso, deviniremos o intervalo de variação de `x` e `y` para o estudo da função, criado dois vetores para esses valores. 
 
-Trabalharemos com vetores entre -10 e 10 e um incremente de 0.001.
+Trabalharemos com vetores entre -5 e 5 e um incremente de 0.01.
 
 Parece muito, mas na verdade não é. 
 """
@@ -92,16 +92,23 @@ md"Finalmente representações gráficas podem ser construídas, primeiramente n
   ╠═╡ =#
 
 # ╔═╡ e0c78be0-dc34-4f4d-a8b6-cdb9c8f8a1fe
-plot(contourf(vec_xy, vec_xy, log.(vec_z), color=:viridis))
+plot(
+	contourf(vec_xy, vec_xy, log.(vec_z), color=:viridis), 
+	annotations = (1,1, Plots.text("← minimo", :left))
+)
+
 
 # ╔═╡ 85be93ac-f1a5-464c-936e-bcab792a5b95
 md"Em seguida como uma superfície tridimensional."
 
 # ╔═╡ 6b02ca19-ee6e-4442-94cf-58ed9ab2ca96
-surface(vec_xy, vec_xy, log.(vec_z), color=:viridis)
+plot(
+	surface(vec_xy, vec_xy, log.(vec_z), color=:viridis),
+	annotations = (1,1, 0, Plots.text("← minimo", :left))
+)
 
 # ╔═╡ b3ff1ab6-0ef3-44fb-b8f6-162315e973f2
-
+ log(rosen(1.,1.))
 
 # ╔═╡ Cell order:
 # ╠═c849873f-223e-475f-9f21-5f478b00a2c9
