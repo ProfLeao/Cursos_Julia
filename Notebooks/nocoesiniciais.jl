@@ -81,6 +81,8 @@ md"""
 Para isso primeiramente é preciso avaliar os valores de $f(x,y)$ em todo o intervalo dessas variáveis. É claro que é preciso notar que se o comprimento dos vetores $x$ e $y$ for $n$, teremos um valor de $f(x,y)$ para cada possível par ordenado $(x_i, y_j)$ com $i$ e $j$ tomados de $n$ a $n$. Logo $f(x,y)$ será uma matriz $n \times n$.
 
 Para a aplicação da função elemento-a-elemnto (*elementwise*), aplica-se o operador *broadcast* para a função. Na forma `rosen.(parametros)`.
+
+Note o uso do operador 
 """
 
 # ╔═╡ e636ae77-77dd-414d-9eae-b6c1aff8583c
@@ -130,7 +132,7 @@ Exatamente por isso, esta função é empregada como uma referência de testes p
 # ╠═6fae4fa7-92fa-4af4-bcd5-3b18fa9d492a
 # ╟─d26d9c9a-0eea-48ba-a5ab-8aa988e2dfb6
 # ╠═c32c0172-108c-46a1-9245-8e846fc97bd4
-# ╟─936f38ce-c5de-45b6-ab12-e9f443f97f71
+# ╠═936f38ce-c5de-45b6-ab12-e9f443f97f71
 # ╠═e636ae77-77dd-414d-9eae-b6c1aff8583c
 # ╟─96f2d0f3-5e11-4598-bb04-bd39e38aafb5
 # ╠═e1e619b7-f29d-4c8f-a62f-105bc0189fcf
