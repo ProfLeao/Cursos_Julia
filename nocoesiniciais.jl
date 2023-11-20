@@ -14,12 +14,12 @@ end
 # ╔═╡ e1e619b7-f29d-4c8f-a62f-105bc0189fcf
 begin
 	using Plots
-	plotly()
+	gr()
 end
 
 # ╔═╡ c9dfb2ba-5710-11ee-3f3b-ad0d7a9832cc
 md"""
-# Curso de fundamentos de otimização com Optimization.jl
+# Curso de fundamentos de otimização
 ## Autor: Prof. Dr. Reginaldo Gonçalves Leão Junior
 ### E-mail: reginaldo.junior@ifmg.edu.br
 """
@@ -31,6 +31,10 @@ md"""
 Este primeiro notebook apresenta noções fundamentais de modelagem computacional utilizando Julia, seu principal objetivo é apresentar as formas de declaração de uma função matemática compatível com os métodos de otimização que utilizaremos e como plotá-las para avaliar quantitativamente nossos resultados. 
 
 Para começarmos iniciaremos com a modelagem de uma função matemática muito importante para o estudo de métodos de otimização, a função de Rosenbrok.
+
+$$f(x,y) = (a - x)^2 + b(y - x^2)^2$$
+
+Neste exemplo consideraremos $a=1$ e $b=100$, de tal forma que ela assume o seguinte formato.
 
 $$f(x,y) = (1 - x)^2 + 100(y - x^2)^2$$
 
@@ -80,7 +84,10 @@ Para a aplicação da função elemento-a-elemnto (*elementwise*), aplica-se o o
 """
 
 # ╔═╡ e636ae77-77dd-414d-9eae-b6c1aff8583c
-vec_z = @. rosen(vec_xy', vec_xy);
+vec_z = rosen.(vec_xy', vec_xy);
+
+# ╔═╡ 96f2d0f3-5e11-4598-bb04-bd39e38aafb5
+md"Carregamos a biblioteca para plotagem e selecionamos o *backend* padrão."
 
 # ╔═╡ 4fe859f9-fc9a-4f9a-8a93-62308da20a3d
 md"Finalmente representações gráficas podem ser construídas, primeiramente na forma de um contorno 2D."
@@ -94,7 +101,7 @@ md"Finalmente representações gráficas podem ser construídas, primeiramente n
 # ╔═╡ e0c78be0-dc34-4f4d-a8b6-cdb9c8f8a1fe
 plot(
 	contourf(vec_xy, vec_xy, log.(vec_z), color=:viridis), 
-	annotations = (1,1, Plots.text("← minimo", :left))
+	annotations = (1,1, Plots.text("← mínimo", :left))
 )
 
 
@@ -103,28 +110,33 @@ md"Em seguida como uma superfície tridimensional."
 
 # ╔═╡ 6b02ca19-ee6e-4442-94cf-58ed9ab2ca96
 plot(
-	surface(vec_xy, vec_xy, log.(vec_z), color=:viridis),
-	annotations = (1,1, 0, Plots.text("← minimo", :left))
+	surface(vec_xy, vec_xy, log.(vec_z), color=:viridis, aspect_ratio = :equal),
+	annotations = (1,1.1,-5.5, Plots.text("← mínimo", :left))
 )
 
 # ╔═╡ b3ff1ab6-0ef3-44fb-b8f6-162315e973f2
- log(rosen(1.,1.))
+md"""
+Essa função é especialmente importante para a otimização já que trata-se de uma função não convexa, cujo o mínimo glbal pode ser facilmente determinado por $(x,y) = (a, a^2)$ onde $f(x,y) = 0$.
+
+Exatamente por isso, esta função é empregada como uma referência de testes para uma grande parcela dos métodos de otimização.
+"""
 
 # ╔═╡ Cell order:
 # ╠═c849873f-223e-475f-9f21-5f478b00a2c9
 # ╠═c9dfb2ba-5710-11ee-3f3b-ad0d7a9832cc
 # ╠═bfbdfcc8-4c0e-4055-aa76-139b61635178
 # ╠═b4ef11f9-6724-44e0-a0c3-38eba9f547ea
-# ╠═2239da30-8402-4f9f-9859-88e135fa9236
+# ╟─2239da30-8402-4f9f-9859-88e135fa9236
 # ╠═6fae4fa7-92fa-4af4-bcd5-3b18fa9d492a
-# ╠═d26d9c9a-0eea-48ba-a5ab-8aa988e2dfb6
+# ╟─d26d9c9a-0eea-48ba-a5ab-8aa988e2dfb6
 # ╠═c32c0172-108c-46a1-9245-8e846fc97bd4
-# ╠═936f38ce-c5de-45b6-ab12-e9f443f97f71
+# ╟─936f38ce-c5de-45b6-ab12-e9f443f97f71
 # ╠═e636ae77-77dd-414d-9eae-b6c1aff8583c
+# ╟─96f2d0f3-5e11-4598-bb04-bd39e38aafb5
 # ╠═e1e619b7-f29d-4c8f-a62f-105bc0189fcf
-# ╠═4fe859f9-fc9a-4f9a-8a93-62308da20a3d
+# ╟─4fe859f9-fc9a-4f9a-8a93-62308da20a3d
 # ╠═68c3f09d-6e5c-43d2-a5ad-64e59184e456
 # ╠═e0c78be0-dc34-4f4d-a8b6-cdb9c8f8a1fe
-# ╠═85be93ac-f1a5-464c-936e-bcab792a5b95
+# ╟─85be93ac-f1a5-464c-936e-bcab792a5b95
 # ╠═6b02ca19-ee6e-4442-94cf-58ed9ab2ca96
-# ╠═b3ff1ab6-0ef3-44fb-b8f6-162315e973f2
+# ╟─b3ff1ab6-0ef3-44fb-b8f6-162315e973f2
