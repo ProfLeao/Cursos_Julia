@@ -20,7 +20,7 @@ md"""
 
 # ╔═╡ 7c010593-bfd4-4877-80d9-29ada6cbe805
 md"""
-### Modelagem de problemas unidimensionais
+### Modelagem de problemas para otimização
 """
 
 # ╔═╡ Cell order:
