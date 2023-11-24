@@ -51,6 +51,12 @@ Existem três superfícies da geometria do problema: (i) a "tampa e o fundo" cuj
 Como se deseja minimizar a área de folhas de alumínio para a construção da lata o problema pode ser escrito como:
 
 $$Minimize \qquad (2 \pi r h + 2 \pi r^2)$$
+
+Obviamente este problema possui uma restrição, o volume da lata deve ser 473 ml.
+Assim o problema fica completamente expresso por:
+
+$$Minimize \qquad (2 \pi r h + 2 \pi r^2); \quad \pi r^2 h = 473,00$$
+
 """
 
 # ╔═╡ Cell order:
